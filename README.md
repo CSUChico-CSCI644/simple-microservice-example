@@ -120,7 +120,7 @@ Now we need to update/change the configuration for NGINX.
 sudo rm /etc/nginx/sites-enabled/default
 sudo cp FrontendApplication/vhost.conf /etc/nginx/sites-available/
 sudo ln -s /etc/nginx/sites-available/vhost.conf /etc/nginx/sites-enabled/default
-sudo systemctrl restart nginx
+sudo systemctl restart nginx
 ```
 
 

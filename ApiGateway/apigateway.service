@@ -1,0 +1,17 @@
+[Unit]
+Description=API Gateway Service Application
+After=network.target
+
+[Service]
+Environment="QUOTES_API=http://localhost:5000"
+Environment="APP_ENV=production"
+Environment="APP_VERSION=1.1.0"
+Environment="BUILD_SHA=manual"
+Environment="BUILD_TIME=manual"
+User=bryandixon
+WorkingDirectory=/home/bryandixon/simple-microservice-example/ApiGateway/
+ExecStart=npm run start
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

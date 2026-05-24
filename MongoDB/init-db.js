@@ -1,7 +1,7 @@
 db = db.getSiblingDB("quote_db");
-db.quote_tb.drop();
+db.quote_tb.createIndex({ "id": 1 }, { unique: true });
 
-db.quote_tb.insertMany([
+var quotes = [
     {
         "id": 1,
         "quote": "Nothing is impossible, the word itself says \"I'm possible\"!",
@@ -252,4 +252,12 @@ db.quote_tb.insertMany([
         "quote": "What we achieve inwardly will change outer reality.",
         "author": "Plutarch"
     }
-]);
+];
+
+quotes.forEach(function(quote) {
+    db.quote_tb.updateOne(
+        { "id": quote.id },
+        { "$set": quote },
+        { "upsert": true }
+    );
+});

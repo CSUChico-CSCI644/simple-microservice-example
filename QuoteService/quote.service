@@ -1,0 +1,25 @@
+[Unit]
+Description=Quote Service Application
+After=network.target
+
+[Service]
+Environment="MONGO_HOST=localhost"
+Environment="MONGO_PORT=27017"
+Environment="MONGO_USER=root"
+Environment="MONGO_PASSWORD=pass"
+Environment="MONGO_AUTH_SOURCE=admin"
+Environment="MONGO_DB=quote_db"
+Environment="MONGO_COLLECTION=quote_tb"
+Environment="REDIS_HOST=localhost"
+Environment="REDIS_PORT=6379"
+Environment="APP_ENV=production"
+Environment="APP_VERSION=1.1.0"
+Environment="BUILD_SHA=manual"
+Environment="BUILD_TIME=manual"
+User=bryandixon
+WorkingDirectory=/home/bryandixon/simple-microservice-example/QuoteService/
+ExecStart=/home/bryandixon/simple-microservice-example/QuoteService/venv/bin/python /home/bryandixon/simple-microservice-example/QuoteService/main.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

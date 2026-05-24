@@ -1,4 +1,4 @@
-var api = process.env.API_GATEWAY // get the API Gateway from the environment
+var api = process.env.API_GATEWAY || '' // defaults to same-origin /api routes
 
 $(document).ready(function() {
     $("#btn").click(function() {
@@ -10,7 +10,7 @@ $(document).ready(function() {
             success: function(data) {
                 $("#quote").removeClass('is-danger')
                 $("#quote").addClass('is-link')
-                $( "#quote" ).html(data.quote.quote + '</br><b>'+ data.quote.by +'</b>'+ '</br><i>Quotes Recieved:'+ data.quote.count +'</i>');
+                $( "#quote" ).html(data.quote.quote + '</br><b>'+ data.quote.by +'</b>'+ '</br><i>Quotes Received:'+ data.quote.count +'</i>');
             },
             error: function(xmlhttprequest, textstatus, message) {
                 $("#quote").removeClass('is-link')

@@ -149,7 +149,7 @@ app.get('/api/quotes/:id', async (req, res) => {
     }
 })
 
-app.get('*', (req, res) => {
+app.use((req, res) => {
     res.status(404)
     return res.json({
         message: 'Resource not found'

@@ -24,7 +24,7 @@ A very simple microservice example with NodeJS, Python, Redis, and Mongo
 ## Runtime configuration
 
 The services are configured with environment variables so the same code can run
-under systemd, Docker Compose, Kubernetes, and CI/CD.
+under systemd, Kubernetes, and CI/CD.
 
 ### API Gateway
 
@@ -66,7 +66,7 @@ routes, which works well when NGINX proxies `/api/` to the API Gateway.
 
 To build this to fit your own **IP Address** please follow the steps before running the whole microservice.
 
-- Install NodeJs on your system
+- Install Node.js 20.9 or newer on your system
 
 - Go to *FrontendApplication* directory
 
@@ -129,7 +129,7 @@ pip install -r requirements.txt
 ```
 
 Set the required MongoDB and Redis environment variables in your shell,
-systemd service, Docker Compose file, or Kubernetes manifests. Then update the
+systemd service, or Kubernetes manifests. Then update the
 quote.service file to match your local paths to python and your code. Copy the
 quote.service file to */etc/systemd/system/quote.service* and then enable the
 QuoteService daemon service.
@@ -142,13 +142,15 @@ sudo systemctl start quote
 
 ## API Gateway
 
+- Install Node.js 20.9 or newer on your system
+
 - Go to *ApiGateway* directory
 
 - Run `npm install`
 
 - Update the environment in the apigateway.service file to point at QuoteService.
     - `Environment="QUOTES_API=http://localhost:5000"`
-    - Use the QuoteService container or Kubernetes service name when deploying in those environments.
+    - Use the QuoteService Kubernetes service name when deploying to Kubernetes.
 
 Now can deploy API Gateway service. Copy the apigateway.service file to */etc/systemd/system/apigateway.service* and then enable the ApiGateway daemon service.
 

@@ -1,7 +1,5 @@
 .vscode
 .idea
-Dockerfile
-docker-compose.yml
 venv
 __pycache__/
 *.pyc
